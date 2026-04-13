@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QualityFirst - QA Services</title>
+    <style>
+        :root {
+            --primary: #00f5d4;
+            --bg: #0a0a0a;
+            --card: #111111;
+            --text: #ffffff;
+            --gray: #aaaaaa;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #222;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .get-started {
+            background: var(--primary);
+            color: black;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            background: #222;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* ==================== SERVICES SECTION ==================== */
+        .section-title {
+            color: var(--primary);
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 60px 0 10px;
+        }
+
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-align: left;
+            transition: all 0.4s ease;
+            border: 1px solid #222;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(0, 245, 212, 0.15);
+            border-color: #333;
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .service-desc {
+            color: var(--gray);
+            font-size: 15.5px;
+        }
+
+        /* ==================== PROJECTS SECTION ==================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-align: left;
+            position: relative;
+            transition: all 0.4s ease;
+            border: 1px solid #222;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px rgba(0, 245, 212, 0.25);
+            border-color: var(--primary);
+        }
+
+        .project-type {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(0, 245, 212, 0.15);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .project-icon {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .project-title {
+            font-size: 22px;
+            margin: 8px 0 12px;
+        }
+
+        .project-desc {
+            color: var(--gray);
+            font-size: 15.2px;
+            line-height: 1.55;
+        }
+
+        .qa-tested {
+            color: var(--primary);
+            font-size: 14.5px;
+            margin-top: 18px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            --bg: #f8f9fa;
+            --card: #ffffff;
+            --text: #111111;
+            --gray: #555555;
+        }
+
+        body.light-mode .service-card,
+        body.light-mode .project-card {
+            border-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">🛡️ QualityFirst</div>
+        <nav>
+            <ul>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button class="get-started">Get Started</button>
+            <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+   
+
+    <!-- Projects Section - 6 Cards -->
+    <section style="margin-top: 100px;">
+        <div class="section-title">Our Portfolio</div>
+        <div class="section-heading">20+ Projects Across Diverse Domains</div>
+        <div class="section-desc">
+            From CRM platforms and e-commerce marketplaces to AI-powered tools and logistics systems – we have tested it all.
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-type">E-Commerce</div>
+                <div class="project-icon">🛒</div>
+                <div class="project-title">Zelzu</div>
+                <div class="project-desc">Multi-vendor e-commerce platform for gaming keys, accessories, and PC repair services with Admin, Customer & Seller portals.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Design Platform</div>
+                <div class="project-icon">🎨</div>
+                <div class="project-title">GE Energie</div>
+                <div class="project-desc">Specialized digital platform for creating and purchasing professional logo designs with customization tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Church Management</div>
+                <div class="project-icon">⛪</div>
+                <div class="project-title">Atrium</div>
+                <div class="project-desc">Complete Church Management System with member tracking, attendance, events, AI-powered insights and Planning Center integration.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Review Platform</div>
+                <div class="project-icon">⭐</div>
+                <div class="project-title">ReviewSphere</div>
+                <div class="project-desc">Advanced review management system with AI sentiment analysis, analytics dashboard and moderation tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Logistics</div>
+                <div class="project-icon">🚚</div>
+                <div class="project-title">SwiftHaul</div>
+                <div class="project-desc">Real-time logistics and fleet management platform with GPS tracking, route optimization and driver portal.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">AI Healthcare</div>
+                <div class="project-icon">🩺</div>
+                <div class="project-title">MediScan</div>
+                <div class="project-desc">AI-powered healthcare diagnostic assistant with patient records, appointment system and medical image analysis.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">E-Commerce</div>
+                <div class="project-icon">🛒</div>
+                <div class="project-title">Zelzu</div>
+                <div class="project-desc">Multi-vendor e-commerce platform for gaming keys, accessories, and PC repair services with Admin, Customer & Seller portals.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Design Platform</div>
+                <div class="project-icon">🎨</div>
+                <div class="project-title">GE Energie</div>
+                <div class="project-desc">Specialized digital platform for creating and purchasing professional logo designs with customization tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Church Management</div>
+                <div class="project-icon">⛪</div>
+                <div class="project-title">Atrium</div>
+                <div class="project-desc">Complete Church Management System with member tracking, attendance, events, AI-powered insights and Planning Center integration.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Review Platform</div>
+                <div class="project-icon">⭐</div>
+                <div class="project-title">ReviewSphere</div>
+                <div class="project-desc">Advanced review management system with AI sentiment analysis, analytics dashboard and moderation tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Logistics</div>
+                <div class="project-icon">🚚</div>
+                <div class="project-title">SwiftHaul</div>
+                <div class="project-desc">Real-time logistics and fleet management platform with GPS tracking, route optimization and driver portal.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">AI Healthcare</div>
+                <div class="project-icon">🩺</div>
+                <div class="project-title">MediScan</div>
+                <div class="project-desc">AI-powered healthcare diagnostic assistant with patient records, appointment system and medical image analysis.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+            <div class="project-card">
+                <div class="project-type">E-Commerce</div>
+                <div class="project-icon">🛒</div>
+                <div class="project-title">Zelzu</div>
+                <div class="project-desc">Multi-vendor e-commerce platform for gaming keys, accessories, and PC repair services with Admin, Customer & Seller portals.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Design Platform</div>
+                <div class="project-icon">🎨</div>
+                <div class="project-title">GE Energie</div>
+                <div class="project-desc">Specialized digital platform for creating and purchasing professional logo designs with customization tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Church Management</div>
+                <div class="project-icon">⛪</div>
+                <div class="project-title">Atrium</div>
+                <div class="project-desc">Complete Church Management System with member tracking, attendance, events, AI-powered insights and Planning Center integration.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Review Platform</div>
+                <div class="project-icon">⭐</div>
+                <div class="project-title">ReviewSphere</div>
+                <div class="project-desc">Advanced review management system with AI sentiment analysis, analytics dashboard and moderation tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Logistics</div>
+                <div class="project-icon">🚚</div>
+                <div class="project-title">SwiftHaul</div>
+                <div class="project-desc">Real-time logistics and fleet management platform with GPS tracking, route optimization and driver portal.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">AI Healthcare</div>
+                <div class="project-icon">🩺</div>
+                <div class="project-title">MediScan</div>
+                <div class="project-desc">AI-powered healthcare diagnostic assistant with patient records, appointment system and medical image analysis.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+            <div class="project-card">
+                <div class="project-type">E-Commerce</div>
+                <div class="project-icon">🛒</div>
+                <div class="project-title">Zelzu</div>
+                <div class="project-desc">Multi-vendor e-commerce platform for gaming keys, accessories, and PC repair services with Admin, Customer & Seller portals.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Design Platform</div>
+                <div class="project-icon">🎨</div>
+                <div class="project-title">GE Energie</div>
+                <div class="project-desc">Specialized digital platform for creating and purchasing professional logo designs with customization tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Church Management</div>
+                <div class="project-icon">⛪</div>
+                <div class="project-title">Atrium</div>
+                <div class="project-desc">Complete Church Management System with member tracking, attendance, events, AI-powered insights and Planning Center integration.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Review Platform</div>
+                <div class="project-icon">⭐</div>
+                <div class="project-title">ReviewSphere</div>
+                <div class="project-desc">Advanced review management system with AI sentiment analysis, analytics dashboard and moderation tools.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Logistics</div>
+                <div class="project-icon">🚚</div>
+                <div class="project-title">SwiftHaul</div>
+                <div class="project-desc">Real-time logistics and fleet management platform with GPS tracking, route optimization and driver portal.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">AI Healthcare</div>
+                <div class="project-icon">🩺</div>
+                <div class="project-title">MediScan</div>
+                <div class="project-desc">AI-powered healthcare diagnostic assistant with patient records, appointment system and medical image analysis.</div>
+                <div class="qa-tested">✓ QA Tested</div>
+            </div>
+        </div>
+
+        <div style="margin: 60px 0 100px;">
+            <button class="get-started" style="padding: 14px 34px; font-size: 17px;">View All 20+ Projects →</button>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light-mode");
+            const btn = document.getElementById("themeBtn");
+            btn.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+        }
+    </script>
+</body>
+</html>
