@@ -632,6 +632,114 @@
             margin-right: 10px;
             font-size: 20px;
         }
+
+        /* ========== LIGHT MODE TEXT GLITCH FIXES ========== */
+        /* Yeh sirf woh overrides hain jo light/dark mode shift par text ko gayab hone se bachate hain */
+        
+        body.light-mode {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-color: #111; /* Cards dark background rakhte hain taake text white dikhe */
+        }
+
+        /* Cards ke andar ke titles white rakho kyunki background dark hai */
+        body.light-mode .service-title,
+        body.light-mode .project-title,
+        body.light-mode .stat-value,
+        body.light-mode .testimonial-author,
+        body.light-mode .process-card .service-title {
+            color: #fff !important;
+        }
+
+        /* Cards ke andar ke descriptions gray rakho */
+        body.light-mode .service-desc,
+        body.light-mode .project-desc,
+        body.light-mode .stat-label,
+        body.light-mode .testimonial-text,
+        body.light-mode .testimonial-role,
+        body.light-mode .process-card .service-desc,
+        body.light-mode .faq-answer,
+        body.light-mode .about-desc,
+        body.light-mode .section-desc,
+        body.light-mode p {
+            color: #aaa !important;
+        }
+
+        /* Cards ke andar special accent colors */
+        body.light-mode .project-client,
+        body.light-mode .qa-tested,
+        body.light-mode .stars,
+        body.light-mode .service-icon,
+        body.light-mode .project-icon,
+        body.light-mode .contact-icon,
+        body.light-mode .process-circle {
+            color: #00b3b3 !important;
+        }
+
+        /* Section headings (jo cards ke bahar hain) - unka color black hoga kyunki background white hai */
+        body.light-mode .section-heading,
+        body.light-mode h1,
+        body.light-mode .logo,
+        body.light-mode .faq-question {
+            color: #000 !important;
+        }
+
+        /* Section titles aur tagline cyan rakho */
+        body.light-mode .section-title,
+        body.light-mode .tagline,
+        body.light-mode nav ul li a {
+            color: #00b3b3 !important;
+        }
+
+        /* Filter buttons */
+        body.light-mode .filter-button {
+            background-color: #111 !important;
+            color: #aaa !important;
+        }
+        body.light-mode .filter-button.active {
+            background-color: #00b3b3 !important;
+            color: white !important;
+        }
+
+        /* Explore button */
+        body.light-mode .explore-button {
+            background-color: black !important;
+            color: white !important;
+        }
+
+        /* Contact form inputs */
+        body.light-mode .contact-form input,
+        body.light-mode .contact-form textarea {
+            background-color: #222 !important;
+            color: #fff !important;
+            border-color: #333 !important;
+        }
+        body.light-mode .contact-form input::placeholder,
+        body.light-mode .contact-form textarea::placeholder {
+            color: #666 !important;
+        }
+
+        /* Contact form labels - FIX for light mode */
+        body.light-mode .contact-form label {
+            color: #fff !important;
+        }
+
+        /* FAQ border */
+        body.light-mode .faq-item {
+            border-bottom-color: #333 !important;
+        }
+
+        /* Process timeline line */
+        body.light-mode .process-timeline::before {
+            background: #333 !important;
+        }
+
+        /* Contact items */
+        body.light-mode .contact-item {
+            color: #aaa !important;
+        }
+
+        /* ========== END LIGHT MODE FIXES ========== */
     </style>
 </head>
 
@@ -732,7 +840,7 @@
 
     <!-- Projects Section -->
     <section>
-        <div class="section-title">Our Portfolio</div>
+        <button class="filter-button active"> <a href="wiewpage.html">View All</a></button>
         <div class="section-heading">20+ Projects Across Diverse Domains</div>
         <div class="section-desc">From CRM platforms and e-commerce marketplaces to AI-powered tools and logistics
             systems – we have tested it all.</div>
@@ -937,7 +1045,8 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section -->Our Portfolio
+
     <section class="contact-section">
         <div class="contact-info">
             <div class="section-title">Get In Touch</div>
@@ -950,7 +1059,7 @@
             </div>
             <div class="contact-item">
                 <div class="contact-icon">📞</div>
-                <div>+1(862) 405-9580</div>
+                <div>+1(862) 405-580</div>
             </div>
             <div class="contact-item">
                 <div class="contact-icon">📍</div>
