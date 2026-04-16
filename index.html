@@ -4,8 +4,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qaforge</title>
-    <style> 
+    <title>QAforge</title>
+    <style>
+        /* 1. Root variables ko update karein taake light mode properly define ho */
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --card-bg: #111; /* Dark mode card color */
+    --accent-color: #00b3b3;
+}
+
+/* 2. Light Mode ka section jo aapne replace karna hai */
+body.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #ffffff; /* Day mode mein card background white hona chahiye */
+}
+
+/* 3. Cards ke liye ye CSS use karein (ye Day mode mein border aur shadow set karega) */
+.service-card, .project-card, .stat-card, .about-card, .process-card, .testimonial-card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light mode mein halki boundary */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* 4. Light mode mein text visibility fix (Important) */
+body.light-mode p, 
+body.light-mode .section-desc, 
+body.light-mode .service-desc, 
+body.light-mode .project-desc {
+    color: #444 !important; /* Day mode mein descriptions thodi dark gray honi chahiyen */
+}
+
+body.light-mode h1, 
+body.light-mode .section-heading, 
+body.light-mode .project-title, 
+body.light-mode .service-title {
+    color: #000 !important; /* Headings pure black */
+}
+
+/* 5. Navigation Links ka color day mode mein cyan hi rahe */
+body.light-mode nav ul li a {
+    color: var(--accent-color) !important;
+}
+
+/* 6. QA Tested aur badges ka color */
+.qa-tested, .project-type {
+    color: var(--accent-color) !important;
+}
+
+
+        
+
+
+
+        
+        
+        /* ========== SPECIFIC MOBILE FIXES FOR QAFORGE ========== */
+
+@media (max-width: 768px) {
+    /* 1. Header & Nav Fix (Screenshot 1 & 2 ka bikhra hua menu) */
+    header {
+        flex-direction: column !important;
+        padding: 15px 10px !important;
+        height: auto !important;
+    }
+
+    nav ul {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important; /* Menu ko 3 columns mein set kar diya */
+        gap: 10px !important;
+        margin: 15px 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    nav ul li {
+        margin: 0 !important;
+    }
+
+    .logo {
+        margin-bottom: 10px !important;
+    }
+
+    /* 2. Contact Section Fix (Form aur Text ki alignment) */
+    .contact-section {
+        flex-direction: column !important;
+        padding: 20px !important;
+        text-align: left !important;
+    }
+
+    .contact-info {
+        width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+    .contact-info h2 {
+        font-size: 36px !important; /* "Let's Talk" text ko mobile ke liye adjust kiya */
+        line-height: 1.1 !important;
+    }
+
+    .contact-form {
+        width: 100% !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Input fields ko full width karne ke liye */
+    .contact-form input, 
+    .contact-form textarea {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Buttons mobile par center karne ke liye */
+    header div[style*="display:flex"] {
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+}
+    /* ========== MOBILE RESPONSIVE UPDATES ========== */
+
+@media (max-width: 768px) {
+    /* Header & Navigation */
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav ul li {
+        margin: 0 8px;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 32px;
+        padding: 0 15px;
+    }
+
+    .section-heading {
+        font-size: 28px;
+        padding: 0 15px;
+    }
+
+    /* Stats Section */
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-card {
+        width: 80%;
+    }
+
+    /* Grids (Services & Projects) */
+    .services-grid, .projects-grid, .about-grid, .testimonials-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        padding: 0 20px;
+    }
+
+    /* Process Timeline Fix */
+    .process-timeline::before {
+        left: 20px; /* Line ko side par move kar diya */
+    }
+
+    .process-step, .process-step:nth-child(even) {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .process-card {
+        width: 85%;
+        margin-left: 40px;
+    }
+
+    .process-circle {
+        position: absolute;
+        left: 0;
+        margin: 0;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+    }
+
+    /* Buttons */
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .audit-button {
+        margin-right: 0;
+        width: 80%;
+    }
+
+    .explore-button {
+        width: 80%;
+    }
+}
+
+/* Choti screens ke liye extra spacing fix */
+@media (max-width: 480px) {
+    nav ul li {
+        font-size: 12px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+} 
         body {
             margin: 0;
             padding: 0;
@@ -198,13 +425,14 @@
 
         .stat-value {
             font-size: 36px;
-            color: #00b3b3;
+            color: #27a6a6;
         }
 
         .stat-label {
             font-size: 16px;
             color: #aaa;
         }
+        
 
         /* Services Section */
         .section-title {
@@ -748,15 +976,13 @@
 
 
     <header>
-        <div class="logo">🛡️ Qaforge</div>
+        <div class="logo">🛡️ QAforge</div>
         <nav>
             <ul>
                 <li><a href="#">Services</a></li>
                 <li><a href="/projects.html">Projects</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Projects</a></li>
             </ul>
         </nav>
         <div style="display:flex; align-items:center;">
@@ -781,19 +1007,19 @@
     <!-- Stats Section -->
     <section class="stats">
         <div class="stat-card">
-            <div class="stat-value">20+</div>
-            <div class="stat-label">Projects Tested</div>
+            <div style="color:#27a6a6  !important;" class="stat-value">20+</div>
+            <div  class="stat-label">Projects Tested</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">99.8%</div>
-            <div class="stat-label">Bug Detection Rate</div>
+            <div style="color:#27a6a6  !important;" class="stat-value">99.8%</div>
+            <div  class="stat-label">Bug Detection Rate</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">50+</div>
-            <div class="stat-label">Enterprise Clients</div>
+            <div style="color:#27a6a6  !important;" class="stat-value">50+</div>
+            <div  class="stat-label">Enterprise Clients</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">7+</div>
+            <div style="color:#27a6a6  !important;" class="stat-value">7+</div>
             <div class="stat-label">Years of Experience</div>
         </div>
     </section>
@@ -983,7 +1209,7 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <div class="testimonial-text">"Qaforge transformed our release cycle. We went from constant
+                <div class="testimonial-text">"QAforge transformed our release cycle. We went from constant
                     hotfixes to zero critical bugs in production over six consecutive sprints."</div>
                 <div class="testimonial-author">Sarah Chen</div>
                 <div class="testimonial-role">CTO, FinEdge Technologies</div>
@@ -1048,6 +1274,35 @@
     <!-- Contact Section -->Our Portfolio
 
     <section class="contact-section">
+        
+
+<!--                        
+<form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" id="contact-form">
+    <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="Name" placeholder="Your full name" required>
+    </div>
+
+    <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" placeholder="you@company.com" required>
+    </div>
+
+    <div class="input-group">
+        <label for="project">Project Details</label>
+        <input type="text" id="project" name="Project-Details" placeholder="e.g., Web App, Mobile App, API, etc." required>
+    </div>
+
+    <div class="input-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="Message" placeholder="Tell us about your project and testing needs..." required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">↑ Send Inquiry</button>
+</form>-->
+
+
+
         <div class="contact-info">
             <div class="section-title">Get In Touch</div>
             <div class="section-heading">Let's Talk About Your Project</div>
@@ -1055,7 +1310,7 @@
                 We typically respond within one business day.</div>
             <div class="contact-item">
                 <div class="contact-icon">✉️</div>
-                <div>theqaforge.online@gmail.com</div>
+                <div>theQAforge.online@gmail.com</div>
             </div>
             <div class="contact-item">
                 <div class="contact-icon">📞</div>
@@ -1067,6 +1322,9 @@
             </div>
         </div>
         <div class="contact-form">
+
+            <!-- modify this form HTML and place wherever you want your form -->
+             <iframe src="contact-form.html" width="100%" height="400px" frameborder="0" scrolling="no"></iframe>
             <label class="input-label">Name</label>
             <input type="text" placeholder="Your full name">
             <label>Email</label>
