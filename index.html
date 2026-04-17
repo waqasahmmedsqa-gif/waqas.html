@@ -979,10 +979,12 @@ body.light-mode nav ul li a {
         <div class="logo">🛡️ QAforge</div>
         <nav>
             <ul>
-                <li><a href="#">Services</a></li>
-                <li><a href="/projects.html">Projects</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+            
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/viewallservices.html">Services</a></li>
+                <li><a href="/viewprojects.html">Projects</a></li>
+                <li><a href="/error.html">About Us</a></li>
+                <li><a href="/error.html">Contact</a></li>
             </ul>
         </nav>
         <div style="display:flex; align-items:center;">
@@ -1000,7 +1002,9 @@ body.light-mode nav ul li a {
     <p>Professional SQA services including testing, documentation, and project quality assurance. Ship with confidence,
         every single time.</p>
     <div class="buttons">
-        <button class="audit-button">Request a Free QA Audit →</button>
+        <a href="/submission.html" style="text-decoration: none;">
+    <button class="audit-button">Request a Free QA Audit →</button>
+</a>
         <button class="explore-button">Explore Services</button>
     </div>
 
@@ -1066,7 +1070,7 @@ body.light-mode nav ul li a {
 
     <!-- Projects Section -->
     <section>
-        <button class="filter-button active"> <a href="wiewpage.html">View All</a></button>
+        <button class="filter-button active"> <a href="viewallservices.html">View All</a></button>
         <div class="section-heading">20+ Projects Across Diverse Domains</div>
         <div class="section-desc">From CRM platforms and e-commerce marketplaces to AI-powered tools and logistics
             systems – we have tested it all.</div>
@@ -1119,7 +1123,7 @@ body.light-mode nav ul li a {
             </div>
         </div>
         <div style="margin: 30px 0;">
-            <button class="explore-button">Show All 17 Projects</button>
+            <button class="filter-button active"> <a href="viewprojects.html">View All</a></button>
         </div>
     </section>
 
@@ -1325,15 +1329,7 @@ body.light-mode nav ul li a {
 
             <!-- modify this form HTML and place wherever you want your form -->
              <iframe src="contact-form.html" width="100%" height="400px" frameborder="0" scrolling="no"></iframe>
-            <label class="input-label">Name</label>
-            <input type="text" placeholder="Your full name">
-            <label>Email</label>
-            <input type="email" placeholder="you@company.com">
-            <label>Project Details</label>
-            <input type="text" placeholder="e.g., Web App, Mobile App, API, etc.">
-            <label>Message</label>
-            <textarea placeholder="Tell us about your project and testing needs..."></textarea>
-            <button class="send-button">↑ Send Inquiry</button>
+          
         </div>
     </section>
 

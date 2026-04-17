@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Project | QAForge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #0A0A0A;
+            --border-color: #1A1A1A;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --input-bg: #111111;
+            --input-border: #222222;
+            --nav-bg: #000000;
+        }
+
+        .light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --input-bg: #ffffff;
+            --input-border: #cbd5e1;
+            --nav-bg: #ffffff;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        /* Nav links styling to match your list */
+        .nav-links-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links-list a {
+            color: #00d4d4;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links-list a:hover {
+            opacity: 0.7;
+        }
+
+        .form-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            width: 100%;
+            background-color: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #00d4d4;
+            box-shadow: 0 0 0 3px rgba(0, 212, 212, 0.1);
+        }
+
+        input[type="file"]::file-selector-button {
+            background-color: var(--input-border);
+            color: #00d4d4;
+            border: 1px solid var(--input-border);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-cyan {
+            background-color: #00d4d4;
+            color: black;
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-cyan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 212, 0.2);
+        }
+
+        .text-muted { color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-black dark:bg-white flex items-center justify-center rounded-sm border border-gray-700">
+                <div class="w-4 h-6 bg-red-600 rounded-b-full"></div>
+            </div>
+            <span class="text-2xl font-bold tracking-tight">QAForge</span>
+        </div>
+
+         <nav>
+            <ul>
+            
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/viewallservices.html">Services</a></li>
+                <li><a href="/viewprojects.html">Projects</a></li>
+                <li><a href="/error.html">About Us</a></li>
+                <li><a href="/error.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <a href="#" class="btn-cyan text-sm py-2 px-5">Get Started</a>
+            <div id="themeToggle" class="bg-gray-800 dark:bg-[#1A1A1A] p-2 rounded-lg cursor-pointer hover:scale-110 transition-transform">
+                <span id="themeIcon">🌙</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-16 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold mb-3">Project Submission</h1>
+            <p class="text-muted">Please provide your project details and relevant documents below.</p>
+        </div>
+
+        <form class="form-card grid grid-cols-1 md:grid-cols-2 gap-6" id="projectForm">
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-semibold">Full Name <span class="text-[#00d4d4]">*</span></label>
+                <input type="text" placeholder="John Doe" class="input-field" required>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-semibold">Company / Agency Name</label>
+                <input type="text" placeholder="e.g. Acme Corp" class="input-field">
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-semibold">Work Email <span class="text-[#00d4d4]">*</span></label>
+                <input type="email" placeholder="john@company.com" class="input-field" required>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-semibold">Project / App URL <span class="text-[#00d4d4]">*</span></label>
+                <input type="url" placeholder="https://myapp.com" class="input-field" required>
+            </div>
+
+            <div class="flex flex-col gap-2 md:col-span-2">
+                <label class="text-sm font-semibold">Tech Stack <span class="text-[#00d4d4]">*</span></label>
+                <input type="text" placeholder="e.g. React, Node.js, AWS" class="input-field" required>
+            </div>
+
+            <div class="flex flex-col gap-2 md:col-span-2">
+                <label class="text-sm font-semibold">Project Description / Message <span class="text-[#00d4d4]">*</span></label>
+                <textarea rows="4" placeholder="Tell us more about your project..." class="input-field resize-none" required></textarea>
+            </div>
+
+            <div class="flex flex-col gap-2 md:col-span-2">
+                <label class="text-sm font-semibold">File Attachment (Optional)</label>
+                <input type="file" class="input-field cursor-pointer">
+                <p class="text-slate-500 text-xs italic">Upload project brief, screenshots, or documentation (Max: 10MB)</p>
+            </div>
+
+            <div class="md:col-span-2 flex flex-col sm:flex-row gap-4 mt-4">
+                <button type="submit" class="btn-cyan flex-1">Submit Application</button>
+                <button type="reset" class="bg-[#222222] text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-700 transition-all">Clear Form</button>
+            </div>
+        </form>
+    </main>
+
+    <footer class="text-center py-10 opacity-50 border-t border-gray-200 dark:border-white/5">
+        <p class="text-[10px] uppercase tracking-[0.4em]">QAForge © 2026</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if(body.classList.contains('light-mode')) {
+                themeIcon.innerText = '☀️';
+                themeToggle.classList.replace('bg-gray-800', 'bg-gray-200');
+            } else {
+                themeIcon.innerText = '🌙';
+                themeToggle.classList.replace('bg-gray-200', 'bg-gray-800');
+            }
+        });
+    </script>
+</body>
+</html>
