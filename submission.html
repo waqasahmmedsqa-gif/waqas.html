@@ -48,7 +48,6 @@
             z-index: 50;
         }
 
-        /* Nav links styling to match your list */
         .nav-links-list {
             display: flex;
             gap: 2rem;
@@ -110,6 +109,7 @@
             padding: 0.8rem 2rem;
             border-radius: 8px;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .btn-cyan:hover {
@@ -130,14 +130,13 @@
             <span class="text-2xl font-bold tracking-tight">QAForge</span>
         </div>
 
-         <nav>
-            <ul>
-            
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/viewallservices.html">Services</a></li>
-                <li><a href="/viewprojects.html">Projects</a></li>
-                <li><a href="/error.html">About Us</a></li>
-                <li><a href="/error.html">Contact</a></li>
+        <nav class="hidden md:block">
+            <ul class="nav-links-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="submission.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="error.html">About Us</a></li>
+                <li><a href="error.html">Contact</a></li>
             </ul>
         </nav>
 
@@ -155,40 +154,40 @@
             <p class="text-muted">Please provide your project details and relevant documents below.</p>
         </div>
 
-        <form class="form-card grid grid-cols-1 md:grid-cols-2 gap-6" id="projectForm">
+        <form class="form-card grid grid-cols-1 md:grid-cols-2 gap-6" id="submissionForm">
             <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Full Name <span class="text-[#00d4d4]">*</span></label>
-                <input type="text" placeholder="John Doe" class="input-field" required>
+                <input type="text" name="fullName" placeholder="John Doe" class="input-field" required>
             </div>
 
             <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Company / Agency Name</label>
-                <input type="text" placeholder="e.g. Acme Corp" class="input-field">
+                <input type="text" name="companyName" placeholder="e.g. Acme Corp" class="input-field">
             </div>
 
             <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Work Email <span class="text-[#00d4d4]">*</span></label>
-                <input type="email" placeholder="john@company.com" class="input-field" required>
+                <input type="email" name="workEmail" placeholder="john@company.com" class="input-field" required>
             </div>
 
             <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Project / App URL <span class="text-[#00d4d4]">*</span></label>
-                <input type="url" placeholder="https://myapp.com" class="input-field" required>
+                <input type="url" name="projectUrl" placeholder="https://myapp.com" class="input-field" required>
             </div>
 
             <div class="flex flex-col gap-2 md:col-span-2">
                 <label class="text-sm font-semibold">Tech Stack <span class="text-[#00d4d4]">*</span></label>
-                <input type="text" placeholder="e.g. React, Node.js, AWS" class="input-field" required>
+                <input type="text" name="techStack" placeholder="e.g. React, Node.js, AWS" class="input-field" required>
             </div>
 
             <div class="flex flex-col gap-2 md:col-span-2">
                 <label class="text-sm font-semibold">Project Description / Message <span class="text-[#00d4d4]">*</span></label>
-                <textarea rows="4" placeholder="Tell us more about your project..." class="input-field resize-none" required></textarea>
+                <textarea name="description" rows="4" placeholder="Tell us more about your project..." class="input-field resize-none" required></textarea>
             </div>
 
             <div class="flex flex-col gap-2 md:col-span-2">
                 <label class="text-sm font-semibold">File Attachment (Optional)</label>
-                <input type="file" class="input-field cursor-pointer">
+                <input type="file" name="attachment" class="input-field cursor-pointer">
                 <p class="text-slate-500 text-xs italic">Upload project brief, screenshots, or documentation (Max: 10MB)</p>
             </div>
 
@@ -204,6 +203,7 @@
     </footer>
 
     <script>
+        // Theme Toggle Logic
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
@@ -218,6 +218,37 @@
                 themeToggle.classList.replace('bg-gray-200', 'bg-gray-800');
             }
         });
+
+        // Backend Submission Logic
+        document.getElementById('submissionForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('process.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                alert(result.message); 
+                
+                if(result.status === 'success') {
+                    e.target.reset();
+                }
+            } catch (error) {
+                alert("Server se connection nahi ho saka!");
+            } finally {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
+        };
     </script>
 </body>
 </html>
