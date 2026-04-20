@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = strip_tags(trim($_POST["description"]));
 
     // 2. Email Configuration
-    $recipient = "waqasahmmedsqa@mgail.com"; // Jahan aapko report chahiye
+    $recipient = "waqasahmmedsqa@gmail.com"; // Jahan aapko report chahiye
     $subject = "New Project Submission from $name";
     
     // Email Content

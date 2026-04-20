@@ -61,9 +61,7 @@
             transition: opacity 0.3s;
         }
 
-        .nav-links-list a:hover {
-            opacity: 0.7;
-        }
+        .nav-links-list a:hover { opacity: 0.7; }
 
         .form-card {
             background-color: var(--card-bg);
@@ -90,18 +88,6 @@
             box-shadow: 0 0 0 3px rgba(0, 212, 212, 0.1);
         }
 
-        input[type="file"]::file-selector-button {
-            background-color: var(--input-border);
-            color: #00d4d4;
-            border: 1px solid var(--input-border);
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-right: 15px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
         .btn-cyan {
             background-color: #00d4d4;
             color: black;
@@ -118,31 +104,59 @@
         }
 
         .text-muted { color: var(--text-muted); }
+
+        /* POPUP STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid #00d4d4;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(0, 212, 212, 0.2);
+        }
     </style>
 </head>
 <body>
 
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="mb-4 inline-flex items-center justify-center w-12 h-12 bg-emerald-500/20 text-emerald-500 rounded-full">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Submission Successful</h3>
+            <p class="text-muted mb-6">Your request sent successfully. We will get back to you soon!</p>
+            <button onclick="closeModal()" class="btn-cyan w-full">Great!</button>
+        </div>
+    </div>
+
     <header class="navbar">
         <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-black dark:bg-white flex items-center justify-center rounded-sm border border-gray-700">
-                <div class="w-4 h-6 bg-red-600 rounded-b-full"></div>
-            </div>
             <span class="text-2xl font-bold tracking-tight">QAForge</span>
         </div>
-
         <nav class="hidden md:block">
             <ul class="nav-links-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="submission.html">Services</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="error.html">About Us</a></li>
-                <li><a href="error.html">Contact</a></li>
+                <li><a href="/error.html">About Us</a></li>
+                <li><a href="/submission.html">Contact</a></li>
             </ul>
         </nav>
-
         <div class="flex items-center gap-4">
-            <a href="#" class="btn-cyan text-sm py-2 px-5">Get Started</a>
-            <div id="themeToggle" class="bg-gray-800 dark:bg-[#1A1A1A] p-2 rounded-lg cursor-pointer hover:scale-110 transition-transform">
+            <div id="themeToggle" class="bg-gray-800 p-2 rounded-lg cursor-pointer">
                 <span id="themeIcon">🌙</span>
             </div>
         </div>
@@ -162,17 +176,17 @@
 
             <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Company / Agency Name</label>
-                <input type="text" name="companyName" placeholder="e.g. Acme Corp" class="input-field">
+                <input type="text" name="company" placeholder="e.g. Acme Corp" class="input-field">
             </div>
 
             <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Work Email <span class="text-[#00d4d4]">*</span></label>
-                <input type="email" name="workEmail" placeholder="john@company.com" class="input-field" required>
+                <input type="email" name="email" placeholder="john@company.com" class="input-field" required>
             </div>
 
             <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Project / App URL <span class="text-[#00d4d4]">*</span></label>
-                <input type="url" name="projectUrl" placeholder="https://myapp.com" class="input-field" required>
+                <input type="url" name="url" placeholder="https://myapp.com" class="input-field" required>
             </div>
 
             <div class="flex flex-col gap-2 md:col-span-2">
@@ -182,72 +196,71 @@
 
             <div class="flex flex-col gap-2 md:col-span-2">
                 <label class="text-sm font-semibold">Project Description / Message <span class="text-[#00d4d4]">*</span></label>
-                <textarea name="description" rows="4" placeholder="Tell us more about your project..." class="input-field resize-none" required></textarea>
+                <textarea name="message" rows="4" placeholder="Tell us more about your project..." class="input-field resize-none" required></textarea>
             </div>
 
             <div class="flex flex-col gap-2 md:col-span-2">
-                <label class="text-sm font-semibold">File Attachment (Optional)</label>
-                <input type="file" name="attachment" class="input-field cursor-pointer">
-                <p class="text-slate-500 text-xs italic">Upload project brief, screenshots, or documentation (Max: 10MB)</p>
+                <label class="text-sm font-semibold">SRS / Project Doc Link (Optional)</label>
+                <input type="url" name="srs_doc_link" placeholder="https://drive.google.com/..." class="input-field">
+                <p class="text-xs text-slate-500 italic">Provide a Google Drive, Dropbox, or Notion link for project documentation.</p>
             </div>
 
             <div class="md:col-span-2 flex flex-col sm:flex-row gap-4 mt-4">
-                <button type="submit" class="btn-cyan flex-1">Submit Application</button>
+                <button type="submit" id="submitBtn" class="btn-cyan flex-1">Submit Application</button>
                 <button type="reset" class="bg-[#222222] text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-700 transition-all">Clear Form</button>
             </div>
         </form>
     </main>
 
-    <footer class="text-center py-10 opacity-50 border-t border-gray-200 dark:border-white/5">
-        <p class="text-[10px] uppercase tracking-[0.4em]">QAForge © 2026</p>
-    </footer>
-
     <script>
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
+        const form = document.getElementById('submissionForm');
+        const btn = document.getElementById('submitBtn');
+        const modal = document.getElementById('successModal');
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            if(body.classList.contains('light-mode')) {
-                themeIcon.innerText = '☀️';
-                themeToggle.classList.replace('bg-gray-800', 'bg-gray-200');
-            } else {
-                themeIcon.innerText = '🌙';
-                themeToggle.classList.replace('bg-gray-200', 'bg-gray-800');
-            }
-        });
+        // Function to open modal
+        const openModal = () => {
+            modal.style.display = 'flex';
+        }
 
-        // Backend Submission Logic
-        document.getElementById('submissionForm').onsubmit = async (e) => {
+        // Function to close modal
+        const closeModal = () => {
+            modal.style.display = 'none';
+        }
+
+        form.onsubmit = async (e) => {
             e.preventDefault();
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
-            
-            submitBtn.innerText = "Sending...";
-            submitBtn.disabled = true;
 
-            const formData = new FormData(e.target);
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
             
             try {
-                const response = await fetch('process.php', {
+                const response = await fetch('https://formspree.io/f/mlgawrpe', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
                 });
                 
-                const result = await response.json();
-                alert(result.message); 
-                
-                if(result.status === 'success') {
-                    e.target.reset();
+                if (response.ok) {
+                    // SHOW MODAL INSTEAD OF ALERT
+                    openModal();
+                    form.reset();
+                } else {
+                    alert("Server error! Please check your Formspree account limit.");
                 }
             } catch (error) {
-                alert("Server se connection nahi ho saka!");
+                alert("Internet ka masla lag raha hai.");
             } finally {
-                submitBtn.innerText = originalText;
-                submitBtn.disabled = false;
+                btn.innerText = "Submit Application";
+                btn.disabled = false;
             }
+        };
+
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            document.getElementById('themeIcon').innerText = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
         };
     </script>
 </body>
