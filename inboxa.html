@@ -8,7 +8,53 @@
     
     <style> 
 
+/* --- Sirf ye hissa apni CSS mein replace/add karein --- */
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    
+    /* Image jaisa dark aur glowing background */
+    background-color: #050b10; 
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 179, 179, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(0, 179, 179, 0.1) 0%, transparent 35%),
+        linear-gradient(180deg, #050b10 0%, #0a161d 100%);
+    background-attachment: fixed;
+}
+
+/* Background mein glow dots jo image mein thay */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00b3b3;
+    box-shadow: 0 0 15px 3px #00b3b3;
+    opacity: 0.5;
+    z-index: -1;
+}
+body::before { top: 15%; left: 15%; }
+body::after { bottom: 25%; right: 20%; }
+
+/* Cards ko glassmorphism look dene ke liye (taake background nazar aaye) */
+.stat-card, .service-card, .project-card, .about-card, .process-card, .testimonial-card {
+    background: rgba(17, 25, 31, 0.5) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: 0.3s ease;
+}
+
+.stat-card:hover, .service-card:hover {
+    border-color: rgba(0, 179, 179, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0, 179, 179, 0.1) !important;
+}
+
+/* --- CSS Khatam --- */
 
         body {
             margin: 0;
@@ -21,6 +67,34 @@
                 linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px); */
             background-size: 50px 50px;
+            /* --- Sirf ye code replace karein --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+
+    /* Background settings */
+    background-color: #050b10;
+    /* Agar aapke paas background image file hai to uska naam yahan likhen */
+    background-image: url('image_bd88c6.png'); 
+    
+    /* Ye lines background ko repeat hone se rokengi */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Nav Links fix (Jo double ho rahe thay) */
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
         }
 
 
@@ -769,6 +843,7 @@
             <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
         </div>
     </header>
+    
     <script>
         function toggleTheme() {
             document.body.classList.toggle("light-mode");
