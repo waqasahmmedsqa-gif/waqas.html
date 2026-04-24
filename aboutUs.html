@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | QAForge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+/* HEADER */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #111;
+}
+
+/* LOGO */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #00b3b3;
+    text-decoration: none;
+}
+
+/* RIGHT SIDE BUTTONS */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* BUTTON */
+.get-started {
+    background-color: #00b3b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* THEME BUTTON */
+.theme-toggle {
+    background: #222;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+        :root {
+            --bg-color: #000000;
+            --card-bg: #0A0A0A;
+            --border-color: #1A1A1A;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --input-bg: #111111;
+            --input-border: #222222;
+            --nav-bg: #000000;
+        }
+
+        .light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --input-bg: #ffffff;
+            --input-border: #cbd5e1;
+            --nav-bg: #ffffff;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-links-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links-list a {
+            color: #00d4d4;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links-list a:hover { opacity: 0.7; }
+
+        .form-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-cyan {
+            background-color: #00d4d4;
+            color: black;
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-cyan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 212, 0.2);
+        }
+
+        .text-muted { color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🛡️ QAforge</div>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/viewallservices.html">Services</a></li>
+            <li><a href="/viewprojects.html">Projects</a></li>
+            <li><a href="/aboutUs.html">About Us</a></li>
+            <li><a href="/submission.html">Contact</a></li>
+            <li><a href="/privacypolicy.html">privacy policy</a></li>
+        </ul>
+    </nav>
+    <div style="display:flex; align-items:center; gap: 10px;">
+        
+       <!--<a href="/QAForge_Company_Portfolio_Part1.pdf" download="QAforge-Profile.pdf">
+            <button class="download-btn">📥 Download Profile</button>
+        </a>-->
+       <a href="submission.html" style="text-decoration: none;">
+        <button class="get-started">Get Started</button>
+       </a>
+      <a href="/QAForge_Company_Portfolio_Part1.pdf" download="QAforge-Profile.pdf">
+        <button class="get-started">📥Profile</button>
+       </a>
+
+
+        <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    </div>
+</header>
+
+    <main class="py-16 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <div class="about-us-image">
+            
+                <img src="/logoimg.svg" alt="About Us" style="width: 100%; height: auto; margin: 0 auto; display: block;">
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <h3 class="text-4xl font-extrabold tracking-tighter mb-4">A Dedicated Team of Quality Experts</h3>
+                <p class="text-muted text-lg leading-relaxed">
+                    We are a passionate team of QA Engineers specializing in comprehensive SQA services including testing, 
+                    documentation, and project quality assurance. We ensure your software is bug-free, user-friendly, and 
+                    reliable, every single time. Ship with confidence, Ship with QAForge.
+                </p>
+                <div class="form-card mt-6">
+                    <h3 class="text-2xl font-bold mb-4">Our Commitment</h3>
+                    <ul class="list-disc list-inside text-muted space-y-2">
+                        <li>99.8% Bug Detection Rate</li>
+                        <li>Over 20+ Enterprise Projects Tested</li>
+                        <li>7+ Years of Industry Experience</li>
+                        <li>Crystal Clear Documentation and Defect Reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // THEME TOGGLE LOGIC
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            document.getElementById('themeIcon').innerText = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        };
+    </script>
+    <script>
+function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("themeBtn");
+
+    body.classList.toggle("light-mode");
+
+    if (body.classList.contains("light-mode")) {
+        btn.innerHTML = "☀️";
+    } else {
+        btn.innerHTML = "🌙";
+    }
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Protocol | QAForge Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: rgba(17, 25, 31, 0.7);
+            --accent-cyan: #00b3b3;
+            --border-color: rgba(0, 179, 179, 0.2);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 179, 179, 0.05) 0%, transparent 50%);
+            margin: 0;
+        }
+
+        .custom-glass-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 24px 6px 6px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .btn-icon-box {
+            width: 38px;
+            height: 38px;
+            background: #111;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .btn-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-glass-btn:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 179, 179, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 32px;
+            padding: 4rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .protocol-item {
+            padding: 1.5rem;
+            border-left: 2px solid var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 16px 16px 0;
+            transition: 0.3s;
+        }
+
+        .protocol-item:hover {
+            background: rgba(0, 179, 179, 0.05);
+        }
+
+        .protocol-number {
+            color: var(--accent-cyan);
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .protocol-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #f8fafc;
+        }
+
+        .protocol-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        h1 span { text-shadow: 0 0 15px rgba(0, 179, 179, 0.3); }
+    </style>
+</head>
+<body>
+
+<main class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="glass-panel">
+            <div class="mb-12 border-b border-gray-800 pb-8 text-center">
+                <h1 class="text-5xl font-extrabold tracking-tighter">QAForge <span class="text-[#00b3b3]">Privacy Protocol</span></h1>
+                <p class="text-gray-400 italic mt-4 text-lg">Enterprise-Grade Software Quality Assurance Security Standards.</p>
+            </div>
+
+            <div class="protocol-grid">
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_01</span>
+                    <h3 class="protocol-title">Non-Disclosure Agreement (NDA)</h3>
+                    <p class="protocol-desc">Har project start hone se pehle legally binding NDA sign kiya jata hai taake aapka business logic aur idea 100% mehfooz rahe.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_02</span>
+                    <h3 class="protocol-title">Zero-Persistence Data Policy</h3>
+                    <p class="protocol-desc">Testing khatam hone ke baad, tamam client-side databases aur local copies ko secure tareeqe se wipe-out (delete) kar diya jata hai.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_03</span>
+                    <h3 class="protocol-title">End-to-End Encrypted Tunneling</h3>
+                    <p class="protocol-desc">Hum project documentation aur build exchange ke liye sirf AES-256 encrypted channels aur VPNs ka istemal karte hain.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_04</span>
+                    <h3 class="protocol-title">PII Data Masking</h3>
+                    <p class="protocol-desc">Production data par testing ke waqt, Personally Identifiable Information (PII) ko mask kar diya jata hai taake asli user details reveal na hon.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_05</span>
+                    <h3 class="protocol-title">Isolated Test Environments</h3>
+                    <p class="protocol-desc">Har client ka project aik separate isolated sandbox environment mein test hota hai, taake cross-contamination ka khatra zero ho.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_06</span>
+                    <h3 class="protocol-title">Security Vulnerability Shield</h3>
+                    <p class="protocol-desc">SQA testing ke doran agar koi security bug milta hai, to woh sirf client ke direct POC (Point of Contact) ko encrypted report mein bheja jata hai.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_07</span>
+                    <h3 class="protocol-title">Access Control Management</h3>
+                    <p class="protocol-desc">Aapke project credentials sirf un specific engineers ko diye jate hain jo assigned hain. Role-based access control (RBAC) sakhti se follow hota hai.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_08</span>
+                    <h3 class="protocol-title">Build Integrity Verification</h3>
+                    <p class="protocol-desc">Hum har build ki checksum verify karte hain taake yeh confirm ho sake ke file transfer ke doran koi mal-code inject nahi hua.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_09</span>
+                    <h3 class="protocol-title">Automated Security Scans</h3>
+                    <p class="protocol-desc">Functional testing ke sath sath, hum industry-standard automation tools se vulnerabilities ko scan karte hain (OWASP Top 10 compliance).</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_10</span>
+                    <h3 class="protocol-title">IP Ownership Guarantee</h3>
+                    <p class="protocol-desc">Code, script aur test cases jo hum develop karte hain, unki 100% intellectual property ownership delivery ke baad client ki hoti hai.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_11</span>
+                    <h3 class="protocol-title">Secure Bug Reporting</h3>
+                    <p class="protocol-desc">Jira aur Trello jaise tools par client dashboards ko multi-factor authentication (MFA) ke zariye protect kiya jata hai.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_12</span>
+                    <h3 class="protocol-title">No Third-Party Leakage</h3>
+                    <p class="protocol-desc">Hum koi bhi third-party analytics tool aapke project par baghair ijazat install nahi karte jo data leak kar sake.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_13</span>
+                    <h3 class="protocol-title">Compliance Audit Logs</h3>
+                    <p class="protocol-desc">Internal audit ke liye har test execution ka log rakha jata hai, taake transparency rahe ke testing kisne aur kab perform ki.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_14</span>
+                    <h3 class="protocol-title">Incident Response Team</h3>
+                    <p class="protocol-desc">Kisi bhi qism ke data anomaly ki surat mein humari dedicated team 24/7 mojud hai for immediate mitigation.</p>
+                </div>
+
+                <div class="protocol-item">
+                    <span class="protocol-number">PROTOCOL_15</span>
+                    <h3 class="protocol-title">Regular Security Training</h3>
+                    <p class="protocol-desc">Humare tamam QA engineers ki security awareness training har 6 mahine baad hoti hai taake woh latest cyber threats se agah rahein.</p>
+                </div>
+            </div>
+
+            <div class="mt-20 pt-10 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <p class="text-sm font-bold tracking-widest uppercase">QAForge SQA Office</p>
+                    <p class="text-xs text-gray-500">ISO 27001 & SOC2 Compliant Methodologies</p>
+                </div>
+                
+                <a href="index.html" class="custom-glass-btn">
+                    <div class="btn-icon-box" style="background: var(--accent-cyan); color: #000;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span class="btn-text">ACKNOWLEDGE PROTOCOL</span>
+                </a>
+            </div>
+        </div>
+        <p class="text-center text-xs text-gray-600 mt-8 tracking-widest">© 2026 QAFORGE STUDIO. ALL RIGHTS RESERVED.</p>
+    </div>
+</main>
+
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle("light-mode");
+    }
+</script>
+
+</body>
+</html>

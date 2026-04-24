@@ -6,6 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QAforge</title>
     <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000 !important; /* Baaki poora page black rahega */
+
+    /* Image sirf opar rahegi */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), #000), url('22920.jpg') !important;
+    
+    background-repeat: no-repeat !important;
+    background-size: 100% 600px !important; /* Image ki height 600px tak rakhi hai */
+    background-position: top center !important;
+    
+    /* Attachment fixed nahi rakha taake scroll karne par image opar hi reh jaye */
+    background-attachment: scroll !important; 
+}
+
+/* Header ko bilkul transparent rakhein taake image poori nazar aaye */
+header {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Body background update */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    
+    /* Naya image name yahan update kiya hai */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('22920.jpg');
+    
+    background-size: cover;           /* Image ko poore header area par phela dega */
+    background-position: top center;  /* Image ka opar wala hissa focus mein rahega */
+    background-attachment: fixed;    /* Scrolling ke waqt image apni jagah rahegi */
+    background-repeat: no-repeat;
+    
+    background-color: #000;           /* Backup color agar image load na ho */
+}
+
+/* Header ko transparent kiya taake image opar tak nazar aaye */
+header {
+    background-color: rgba(0, 0, 0, 0.4) !important; 
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Content ki alignment aur spacing */
+.tagline {
+    margin-top: 80px !important;
+}
+
+h1 {
+    margin-top: 20px !important;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+
+        /* GLASS BUTTON BASE STYLING */
+.custom-glass-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 20px 6px 6px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+/* THE ICON CIRCLE */
+.btn-icon-box {
+    width: 38px;
+    height: 38px;
+    background: #111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.btn-icon-box svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* TEXT STYLING */
+.btn-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* HOVER EFFECTS */
+.custom-glass-btn:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 179, 179, 0.2);
+    transform: translateY(-3px);
+}
+
+/* LIGHT MODE COMPATIBILITY */
+body.light-mode .custom-glass-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .btn-icon-box {
+    background: #fff;
+    color: var(--accent-color);
+}
         /* 1. Root variables ko update karein taake light mode properly define ho */
 :root {
     --bg-color: #000;
@@ -977,13 +1098,14 @@ body.light-mode nav ul li a {
 
     <header>
     <div class="logo">🛡️ QAforge</div>
-    <nav>
+  <nav>
         <ul>
             <li><a href="/index.html">Home</a></li>
             <li><a href="/viewallservices.html">Services</a></li>
             <li><a href="/viewprojects.html">Projects</a></li>
-            <li><a href="/error.html">About Us</a></li>
+            <li><a href="/aboutUs.html">About Us</a></li>
             <li><a href="/submission.html">Contact</a></li>
+            <li><a href="/privacypolicy.html">privacy policy</a></li>
         </ul>
     </nav>
     <div style="display:flex; align-items:center; gap: 10px;">
@@ -1080,7 +1202,12 @@ body.light-mode nav ul li a {
 
     <!-- Projects Section -->
     <section>
-        <button class="filter-button active"> <a href="viewallservices.html">View All</a></button>
+       <a href="/viewallservices.html" class="custom-glass-btn">
+    <div class="btn-icon-box">
+        <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    </div>
+    <span class="btn-text">view more</span>
+</a>
         <div class="section-heading">20+ Projects Across Diverse Domains</div>
         <div class="section-desc">From CRM platforms and e-commerce marketplaces to AI-powered tools and logistics
             systems – we have tested it all.</div>
@@ -1133,8 +1260,12 @@ body.light-mode nav ul li a {
             </div>
         </div>
         <div style="margin: 30px 0;">
-            <button class="filter-button active"> <a href="viewprojects.html">View All</a></button>
-        </div>
+<a href="/viewprojects.html" class="custom-glass-btn">
+    <div class="btn-icon-box">
+        <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    </div>
+    <span class="btn-text">View More</span>
+</a>        </div>
     </section>
 
     <!-- About Section -->
@@ -1374,3 +1505,7 @@ body.light-mode nav ul li a {
 </body>
 
 </html>
+
+
+
+
