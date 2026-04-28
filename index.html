@@ -21,6 +21,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QAforge</title>
     <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000 !important; /* Baaki poora page black rahega */
+
+    /* Image sirf opar rahegi */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), #000), url('/Untitled\ design\ \(1\).gif') !important;
+    
+    background-repeat: no-repeat !important;
+    background-size: 100% 600px !important; /* Image ki height 600px tak rakhi hai */
+    background-position: top center !important;
+    
+    /* Attachment fixed nahi rakha taake scroll karne par image opar hi reh jaye */
+    background-attachment: scroll !important; 
+}
+/* Header ko bilkul transparent rakhein taake image poori nazar aaye */
+header {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000 !important; /* Baaki poora page black rahega */
+
+    /* Image sirf opar rahegi */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), #000), url('Untitled\ design\ \(1\).gif') !important;
+    
+    background-repeat: no-repeat !important;
+    background-size: 100% 600px !important; /* Image ki height 600px tak rakhi hai */
+    background-position: top center !important;
+    
+    /* Attachment fixed nahi rakha taake scroll karne par image opar hi reh jaye */
+    background-attachment: scroll !important; 
+}
+/* Header ko bilkul transparent rakhein taake image poori nazar aaye */
+header {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
         /* GLASS BUTTON BASE STYLING */
 .custom-glass-btn {
     display: inline-flex;
@@ -571,6 +617,7 @@ body.light-mode nav ul li a {
 
         /* Projects Section */
         .projects-filters {
+            
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -1038,7 +1085,7 @@ body.light-mode nav ul li a {
         body.light-mode .contact-item {
             color: #aaa !important;
         }
-
+        
         /* ========== END LIGHT MODE FIXES ========== */
     </style>
 </head>

@@ -7,6 +7,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000 !important; /* Baaki poora page black rahega */
+
+    /* Image sirf opar rahegi */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), #000), url('/Untitled\ design\ \(1\).gif') !important;
+    
+    background-repeat: no-repeat !important;
+    background-size: 100% 600px !important; /* Image ki height 600px tak rakhi hai */
+    background-position: top center !important;
+    
+    /* Attachment fixed nahi rakha taake scroll karne par image opar hi reh jaye */
+    background-attachment: scroll !important; 
+}
+
+/* Header ko bilkul transparent rakhein taake image poori nazar aaye */
+header {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
         :root {
             --bg-color: #000000;
             --card-bg: #0A0A0A;
@@ -150,7 +174,7 @@
             <ul class="nav-links-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="submission.html">Services</a></li>
-                <li><a href="projects.html">Projects</a></li>
+                <li><a href="/viewprojects.html">Projects</a></li>
                 <li><a href="/error.html">About Us</a></li>
                 <li><a href="/submission.html">Contact</a></li>
                 <li><a href="/privacypolicy.html">privacy policy</a></li>
@@ -165,8 +189,8 @@
 
     <main class="py-16 px-6 max-w-4xl mx-auto">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-extrabold mb-3">Project Submission</h1>
-            <p class="text-muted">Please provide your project details and relevant documents below.</p>
+            <h1 class="text-4xl font-extrabold mb-3">Take the first step to bug-free software.</h1>
+            <p class="text-muted">Get in touch to start your free 5-day QA audit.</p>
         </div>
 
         <form class="form-card grid grid-cols-1 md:grid-cols-2 gap-6" id="submissionForm">

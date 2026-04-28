@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAForge — Company Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D2137;
+    --blue: #1A4B7C;
+    --accent: #2176AE;
+    --teal: #17A8A8;
+    --green: #1DB87A;
+    --gold: #E8A020;
+    --light: #F4F7FB;
+    --white: #FFFFFF;
+    --text: #1C2B3A;
+    --muted: #6B7C8D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E8ECF0;
+    color: var(--text);
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+  }
+
+  /* ─── TOP ACCENT BAR ─── */
+  .accent-bar {
+    height: 6px;
+    background: linear-gradient(90deg, var(--navy) 0%, var(--accent) 40%, var(--teal) 70%, var(--gold) 100%);
+  }
+
+  /* ─── COVER PAGE ─── */
+  .cover {
+    background: var(--navy);
+    color: white;
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-accent { height: 6px; background: linear-gradient(90deg, var(--accent) 0%, var(--teal) 50%, var(--gold) 100%); }
+
+  .cover-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(33,118,174,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 80%, rgba(23,168,168,0.15) 0%, transparent 50%);
+  }
+
+  .cover-grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16mm 14mm;
+  }
+
+  .cover-tag {
+    display: inline-block;
+    background: rgba(33,118,174,0.3);
+    border: 1px solid rgba(33,118,174,0.5);
+    color: var(--teal);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .cover h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 46px;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .cover h1 span { color: var(--teal); }
+
+  .cover-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 36px;
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  .cover-divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    margin-bottom: 36px;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 0;
+    margin-bottom: 44px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .cover-stat {
+    padding: 16px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cover-stat:last-child { border-right: none; }
+
+  .cover-stat .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--teal);
+    display: block;
+    line-height: 1;
+  }
+
+  .cover-stat .lbl {
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .cover-geo {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .cover-contact {
+    display: flex;
+    gap: 24px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .cover-contact span { color: var(--teal); }
+
+  .cover-logo-mark {
+    position: absolute;
+    right: -30px;
+    bottom: 60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 40px solid rgba(33,118,174,0.08);
+    z-index: 1;
+  }
+
+  .cover-logo-mark::before {
+    content: '';
+    position: absolute;
+    top: 30px; left: 30px; right: 30px; bottom: 30px;
+    border-radius: 50%;
+    border: 20px solid rgba(23,168,168,0.06);
+  }
+
+  .cover-company {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .cover-tagline {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ─── SECTION PAGES ─── */
+  .section-page { padding: 0; }
+
+  .page-header {
+    background: var(--navy);
+    padding: 18px 14mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-header .brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  .page-header .section-label {
+    font-size: 9px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .page-body { padding: 12mm 14mm; }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .section-title span { color: var(--accent); }
+
+  .section-intro {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 520px;
+  }
+
+  .rule { height: 1px; background: var(--light); margin: 16px 0; }
+
+  /* ─── STAT CIRCLES ─── */
+  .stat-circles { display: flex; gap: 16px; margin: 20px 0; }
+
+  .stat-circle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .circle-wrap {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 8px solid var(--light);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .circle-wrap.c1 { border-color: #E8F4FD; }
+  .circle-wrap.c1::after { border-top-color: var(--accent); border-right-color: var(--accent); }
+  .circle-wrap.c2 { border-color: #E8F9F5; }
+  .circle-wrap.c2::after { border-top-color: var(--green); border-right-color: var(--green); }
+  .circle-wrap.c3 { border-color: #FEF4E8; }
+  .circle-wrap.c3::after { border-top-color: var(--gold); border-right-color: var(--gold); }
+
+  .circle-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+  }
+
+  .circle-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .circle-pct { font-size: 12px; color: var(--muted); }
+
+  .circle-text { text-align: center; }
+  .circle-text strong { display: block; font-size: 11px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 3px; }
+  .circle-text em { font-size: 9px; color: var(--muted); font-style: normal; }
+
+  /* ─── PAIN BOXES ─── */
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+
+  .pain-box {
+    background: #FEF8F8;
+    border-left: 3px solid #E05252;
+    padding: 12px 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .pain-box .pain-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .pain-box .pain-desc { font-size: 10px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── DIFFERENTIATORS ─── */
+  .diff-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 16px 0; }
+
+  .diff-item {
+    background: var(--light);
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  .diff-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .diff-item h4 { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .diff-item p { font-size: 9.5px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── SERVICES GRID ─── */
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0; }
+
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--light);
+    border-radius: 6px;
+  }
+
+  .service-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--navy);
+    border-radius: 5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--teal);
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  .service-item h4 { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .service-item p { font-size: 9.5px; color: var(--muted); line-height: 1.4; }
+
+  .tools-note {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    font-size: 9.5px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    text-align: center;
+    letter-spacing: 0.3px;
+    margin-top: 10px;
+  }
+
+  .tools-note strong { color: var(--teal); }
+
+  /* ─── PROCESS TIMELINE ─── */
+  .process-steps { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+
+  .process-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px;
+    background: var(--light);
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--teal);
+    font-family: 'DM Serif Display', serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-content {}
+  .step-content .step-when { font-size: 9px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+  .step-content h4 { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .step-content p { font-size: 10px; color: var(--muted); line-height: 1.5; }
+
+  .friday-box {
+    margin-top: 14px;
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: white;
+  }
+
+  .friday-box h4 { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 8px; }
+  .friday-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .friday-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* ─── CASE STUDIES ─── */
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+
+  .case-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E8ECF0;
+  }
+
+  .case-header {
+    padding: 10px 12px;
+    background: var(--navy);
+    color: white;
+  }
+
+  .case-header h4 { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+  .case-header .stack { font-size: 8.5px; color: rgba(255,255,255,0.5); }
+
+  .case-body { padding: 10px 12px; background: white; }
+
+  .case-finding {
+    background: #FEF8F8;
+    border-left: 2px solid #E05252;
+    padding: 7px 9px;
+    margin-bottom: 8px;
+    border-radius: 0 4px 4px 0;
+    font-size: 9.5px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .case-finding strong { color: #C0392B; font-weight: 700; }
+
+  .case-result {
+    background: #F0FFF7;
+    border-left: 2px solid var(--green);
+    padding: 7px 9px;
+    border-radius: 0 4px 4px 0;
+    font-size: 9.5px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .case-result strong { color: #0F7C50; font-weight: 700; }
+
+  .case-scope { font-size: 9px; color: var(--muted); margin-bottom: 8px; }
+
+  .case-summary {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .summary-stat {
+    flex: 1;
+    background: var(--navy);
+    color: white;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .summary-stat .s-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--teal);
+    display: block;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .summary-stat .s-lbl { font-size: 9px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ─── INDUSTRY DATA ─── */
+  .industry-circles { display: flex; gap: 16px; margin: 20px 0; }
+
+  .ind-circle {
+    flex: 1;
+    text-align: center;
+  }
+
+  .ind-ring {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ind-ring.r1 { background: conic-gradient(var(--accent) 0% 59%, #E8ECF0 59% 100%); }
+  .ind-ring.r2 { background: conic-gradient(var(--green) 0% 70%, #E8ECF0 70% 100%); }
+  .ind-ring.r3 { background: conic-gradient(var(--gold) 0% 85%, #E8ECF0 85% 100%); }
+
+  .ind-ring-inner {
+    position: absolute;
+    inset: 12px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ind-pct {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .ind-circle p { font-size: 10px; color: var(--text); font-weight: 600; line-height: 1.4; margin-bottom: 3px; }
+  .ind-circle em { font-size: 9px; color: var(--muted); font-style: normal; }
+
+  .quotes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+
+  .quote-block {
+    background: var(--light);
+    border-radius: 8px;
+    padding: 14px 16px;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: var(--accent);
+    opacity: 0.2;
+    line-height: 0.8;
+    position: absolute;
+    top: 10px;
+    left: 14px;
+  }
+
+  .quote-block p {
+    font-size: 10.5px;
+    color: var(--text);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    padding-top: 12px;
+    font-style: italic;
+  }
+
+  .quote-block cite { font-size: 9px; color: var(--accent); font-style: normal; font-weight: 700; display: block; margin-top: 8px; }
+
+  /* ─── PRICING ─── */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+
+  .price-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #E8ECF0;
+    position: relative;
+  }
+
+  .price-card.popular {
+    border-color: var(--accent);
+    border-width: 2px;
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 12px;
+  }
+
+  .price-header {
+    background: var(--navy);
+    padding: 14px 14px 12px;
+    color: white;
+  }
+
+  .price-header.starter { background: linear-gradient(135deg, #1A3A5C, #1A4B7C); }
+  .price-header.growth { background: linear-gradient(135deg, #0D2137, #1A4B7C); }
+  .price-header.scale { background: linear-gradient(135deg, #0A1A2E, #17354D); }
+  .price-header.custom { background: linear-gradient(135deg, #0D2137, #17A8A8); }
+
+  .price-name { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+  .price-amount { font-family: 'DM Serif Display', serif; font-size: 28px; color: white; line-height: 1; margin-bottom: 2px; }
+  .price-amount span { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.5); }
+  .price-desc { font-size: 9.5px; color: var(--teal); margin-bottom: 3px; }
+  .price-hours { font-size: 9px; color: rgba(255,255,255,0.45); }
+
+  .price-body { padding: 12px 14px; background: white; }
+
+  .price-features { list-style: none; margin-bottom: 10px; }
+  .price-features li {
+    font-size: 9.5px;
+    color: var(--text);
+    padding: 3px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.4;
+  }
+
+  .price-features li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .price-best {
+    font-size: 9px;
+    color: var(--muted);
+    border-top: 1px solid var(--light);
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+
+  .price-best strong { color: var(--accent); }
+
+  .flex-note {
+    background: var(--light);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .flex-note h4 { font-size: 10px; font-weight: 700; color: var(--navy); margin-bottom: 4px; flex-basis: 100%; }
+
+  .flex-pill {
+    background: white;
+    border: 1px solid #D8E4F0;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 9px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .comparison-note {
+    background: var(--navy);
+    color: white;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 10px;
+    font-size: 10px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .comparison-note strong { color: var(--teal); }
+
+  /* ─── GET STARTED ─── */
+  .audit-box {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 20px 22px;
+    color: white;
+    margin: 14px 0;
+  }
+
+  .audit-box h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  .audit-box p { font-size: 10.5px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 14px; }
+
+  .audit-items { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 14px; }
+
+  .audit-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .audit-item::before { content: '→'; color: var(--teal); font-weight: 700; }
+
+  .audit-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .audit-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+  }
+
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+
+  .path-card {
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid #E8ECF0;
+  }
+
+  .path-card.yes { background: #F0FFF7; border-color: var(--green); }
+  .path-card.no { background: var(--light); }
+
+  .path-card h4 { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .path-card p { font-size: 10px; color: var(--muted); line-height: 1.5; }
+
+  .contact-box {
+    background: var(--light);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+
+  .contact-item h4 { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+  .contact-item p { font-size: 11px; color: var(--navy); font-weight: 600; }
+
+  .page-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    padding: 8px 14mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--light);
+    border-top: 1px solid #DDE5EE;
+  }
+
+  .page-footer span { font-size: 8.5px; color: var(--muted); }
+  .page-footer .pgnum { font-size: 9px; color: var(--navy); font-weight: 700; }
+
+  .closing-page {
+    background: var(--navy);
+    color: white;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20mm;
+    text-align: center;
+  }
+
+  .closing-page h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .closing-page h2 em { color: var(--teal); font-style: normal; }
+  .closing-page p { font-size: 11px; color: rgba(255,255,255,0.5); }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PAGE 1: COVER ══════════════ -->
+<div class="page cover">
+  <div class="cover-accent"></div>
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-logo-mark"></div>
+
+  <div class="cover-content">
+    <div style="margin-bottom: 40px;">
+      <div class="cover-company">QAForge</div>
+      <div class="cover-tagline">Company Profile · 2025</div>
+    </div>
+
+    <div class="cover-tag">Software Quality Assurance</div>
+
+    <h1>Forging Quality<br>Into Every <span>Release.</span></h1>
+    <p class="cover-sub">Dedicated SQA teams for software development agencies worldwide. We catch bugs before your clients do — structured, professional, and reliable.</p>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="num">5+</span>
+        <span class="lbl">Years Experience</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">30+</span>
+        <span class="lbl">Projects Tested</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">500+</span>
+        <span class="lbl">Bugs Caught</span>
+      </div>
+    </div>
+
+    <div class="cover-geo">US &bull; UK &bull; Canada &bull; Australia &bull; Europe &bull; Asia</div>
+
+    <div class="cover-contact">
+      <span><span>✉</span> hello@qaforge.online</span>
+      <span><span>🌐</span> www.qaforge.online</span>
+      <span><span>💬</span> +92-341-4265012</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 2: THE PROBLEM ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">The Problem</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">Most Agencies Ship With<br><span>Risk Baked In.</span></h2>
+    <p class="section-intro">Software agencies build great products — but without dedicated QA, bugs slip through. Every release carries risk that clients eventually find. The data confirms it.</p>
+
+    <div class="stat-circles">
+      <div class="stat-circle">
+        <div class="circle-wrap c1">
+          <svg viewBox="0 0 90 90" style="position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);">
+            <circle cx="45" cy="45" r="37" fill="none" stroke="#2176AE" stroke-width="8" stroke-dasharray="195 235" stroke-dashoffset="59" stroke-linecap="round"/>
+          </svg>
+          <div class="circle-num">85<span style="font-size:14px">%</span></div>
+        </div>
+        <div class="circle-text">
+          <strong>of bugs caused by developers testing their own code</strong>
+          <em>Bias blindness — NIST Research</em>
+        </div>
+      </div>
+      <div class="stat-circle">
+        <div class="circle-wrap c2">
+          <svg viewBox="0 0 90 90" style="position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);">
+            <circle cx="45" cy="45" r="37" fill="none" stroke="#1DB87A" stroke-width="8" stroke-dasharray="138 235" stroke-dashoffset="59" stroke-linecap="round"/>
+          </svg>
+          <div class="circle-num">59<span style="font-size:14px">%</span></div>
+        </div>
+        <div class="circle-text">
+          <strong>of businesses outsource to reduce risk and cost</strong>
+          <em>Deloitte Global Outsourcing Survey</em>
+        </div>
+      </div>
+      <div class="stat-circle">
+        <div class="circle-wrap c3">
+          <svg viewBox="0 0 90 90" style="position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);">
+            <circle cx="45" cy="45" r="37" fill="none" stroke="#E8A020" stroke-width="8" stroke-dasharray="165 235" stroke-dashoffset="59" stroke-linecap="round"/>
+          </svg>
+          <div class="circle-num">70<span style="font-size:14px">%</span></div>
+        </div>
+        <div class="circle-text">
+          <strong>of B2B decision-makers delegate key tasks to third parties</strong>
+          <em>YouGov Business Survey</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="pain-grid">
+      <div class="pain-box">
+        <div class="pain-title">❌ Developers Can't Test Their Own Code</div>
+        <div class="pain-desc">Bias blindness is real. They see what they built — not what's broken. Edge cases and integration failures slip through every time.</div>
+      </div>
+      <div class="pain-box">
+        <div class="pain-title">❌ Bugs Found by Clients</div>
+        <div class="pain-desc">When clients discover bugs in production, agency trust is damaged. Emergency fixes, weekend calls, and reputation loss follow.</div>
+      </div>
+      <div class="pain-box">
+        <div class="pain-title">❌ Hiring a QA Engineer is Expensive</div>
+        <div class="pain-desc">A US-based QA engineer costs $130K–$184K per year including salary, benefits, and taxes. Not viable for every project.</div>
+      </div>
+      <div class="pain-box">
+        <div class="pain-title">❌ Freelancers Are Unreliable</div>
+        <div class="pain-desc">Disappear mid-project. No documentation. No accountability. No handoff. Zero structured process. The agency pays twice.</div>
+      </div>
+    </div>
+
+    <div style="background:#F4F7FB;border-radius:8px;padding:12px 16px;font-size:10.5px;color:var(--navy);font-weight:600;text-align:center;border-left:3px solid var(--accent);">
+      The result — agencies ship every release hoping nothing breaks. <strong>QAForge ends that cycle.</strong>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">02</span>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 3: WHO WE ARE ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">Who We Are</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">We Do One Thing.<br><span>We Test Software.</span></h2>
+    <p class="section-intro">QAForge is a Pakistan-based software quality assurance company built exclusively to serve software development agencies worldwide. We don't build software. We don't consult. We don't upsell. We test — with structure, documentation, and accountability.</p>
+
+    <div style="background:var(--navy);border-radius:10px;padding:16px 20px;margin-bottom:18px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-10px;left:12px;font-family:'DM Serif Display',serif;font-size:60px;color:rgba(255,255,255,0.05);line-height:1;">"</div>
+      <p style="font-family:'DM Serif Display',serif;font-size:15px;color:white;line-height:1.5;position:relative;z-index:1;font-style:italic;">Our mission is to make sure your clients never find a bug that we should have caught first.</p>
+      <div style="position:absolute;bottom:-10px;right:12px;font-family:'DM Serif Display',serif;font-size:60px;color:rgba(255,255,255,0.05);line-height:1;">"</div>
+    </div>
+
+    <div class="diff-grid">
+      <div class="diff-item">
+        <div class="diff-icon">🎯</div>
+        <h4>QA-Only Focus</h4>
+        <p>No conflicts, no distractions. Pure testing expertise. We live and breathe software quality.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">👥</div>
+        <h4>Dedicated Teams</h4>
+        <p>Same engineers every month. They learn your codebase, your clients, your standards.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">📋</div>
+        <h4>Structured Process</h4>
+        <p>Test plans, test cases, documented evidence. Not random clicking — repeatable methodology.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">📊</div>
+        <h4>Weekly Reports</h4>
+        <p>Every Friday — what was tested, bugs found, pass rates, blockers. Full transparency.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">🌍</div>
+        <h4>Worldwide Service</h4>
+        <p>US, UK, Canada, Australia, Europe and beyond. Overlapping timezones for fast collaboration.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">⚡</div>
+        <h4>Fast Start</h4>
+        <p>Testing begins within one week — not three to six months of recruiting and onboarding.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">03</span>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 4: SERVICES ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">Our Services</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">Ten Testing Disciplines.<br><span>One Focused Team.</span></h2>
+    <p class="section-intro">Complete coverage for web applications, SaaS platforms, APIs, and mobile apps — all delivered in your existing tools with zero workflow disruption.</p>
+
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-dot">01</div>
+        <div>
+          <h4>Functional Testing</h4>
+          <p>Features, workflows, forms, business logic, edge cases, negative scenarios.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">02</div>
+        <div>
+          <h4>API Testing</h4>
+          <p>REST & SOAP validation, authentication, payloads, error handling via Postman.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">03</div>
+        <div>
+          <h4>Regression Testing</h4>
+          <p>Full re-test before every release. Nothing breaks silently between sprints.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">04</div>
+        <div>
+          <h4>Cross-Browser & Device Testing</h4>
+          <p>Chrome, Safari, Firefox, Edge — desktop and mobile. Consistent everywhere.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">05</div>
+        <div>
+          <h4>Performance Testing</h4>
+          <p>Load times, API response speeds, bottlenecks, and scalability under traffic.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">06</div>
+        <div>
+          <h4>Security Testing</h4>
+          <p>Access control, injection vulnerabilities, data exposure, permission enforcement.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">07</div>
+        <div>
+          <h4>Integration Testing</h4>
+          <p>Payment gateways, CRMs, webhooks, email services, third-party API connections.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">08</div>
+        <div>
+          <h4>Mobile App Testing</h4>
+          <p>iOS and Android native and hybrid apps across devices, OS versions, screen sizes.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">09</div>
+        <div>
+          <h4>Bug Documentation</h4>
+          <p>Reproduction steps, screenshots, severity levels, fix recommendations. Actionable.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-dot">10</div>
+        <div>
+          <h4>Test Case Library</h4>
+          <p>Structured documentation your team owns permanently. Repeatable across releases.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-note">
+      We work in <strong>your tools</strong> — Jira · Linear · Notion · GitHub Issues · TestRail · ClickUp · Asana · Trello · Monday.com — no switching required.
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">04</span>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 5: HOW WE WORK ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">How We Work</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">Your QA Team.<br><span>Running in One Week.</span></h2>
+    <p class="section-intro">No lengthy onboarding. No setup delays. We integrate into your workflow immediately and start delivering value from day one.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-when">Week 1</div>
+          <h4>Discovery & Onboarding</h4>
+          <p>We learn your tech stack, tools, client requirements, and priorities. Access granted to staging environment, codebase, and issue tracker. Scope and success criteria defined.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-when">Week 1–2</div>
+          <h4>Test Planning</h4>
+          <p>We write comprehensive test cases for every feature. You review and approve before a single test runs. No surprises.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-when">Ongoing</div>
+          <h4>Test Execution & Bug Reporting</h4>
+          <p>Functional, regression, API, and compatibility tests executed on schedule. Every bug logged instantly with reproduction steps, screenshot, severity, and fix recommendation.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-when">Before Every Release</div>
+          <h4>Regression Pass & Go/No-Go</h4>
+          <p>Full regression run before every deployment. We confirm nothing broke. Final go/no-go recommendation given.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-when">Every Friday</div>
+          <h4>Weekly QA Report Delivered</h4>
+          <p>Professional PDF report in your inbox every Friday — tests run, bugs found, pass rate, blockers, risks, and next week's plan.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="friday-box">
+      <h4>📧 What Arrives in Your Inbox Every Friday</h4>
+      <div class="friday-pills">
+        <span class="friday-pill">Bug count by severity</span>
+        <span class="friday-pill">Pass rate %</span>
+        <span class="friday-pill">Blockers flagged</span>
+        <span class="friday-pill">Features covered</span>
+        <span class="friday-pill">Next sprint plan</span>
+        <span class="friday-pill">Fix priority guidance</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">05</span>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 6: CASE STUDIES ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">Proven Results</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">Real Bugs Stopped.<br><span>Real Clients Protected.</span></h2>
+    <p class="section-intro">These are real projects we have tested. Client names are anonymized. The bugs, the results, and the numbers are real.</p>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-header">
+          <h4>SalesStrat — CRM Platform</h4>
+          <div class="stack">React · Node.js · iOS · Android</div>
+        </div>
+        <div class="case-body">
+          <div class="case-scope">300+ test cases across 3 platforms · 4 months</div>
+          <div class="case-finding">
+            <strong>Found:</strong> API authentication failing 30–40% of requests — silent data loss in CRM sync
+          </div>
+          <div class="case-result">
+            <strong>Result:</strong> Zero critical bugs in production for 18+ months. Client renewed QA retainer.
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <h4>Zelzu — Multi-Vendor Marketplace</h4>
+          <div class="stack">MERN Stack · Stripe · AWS</div>
+        </div>
+        <div class="case-body">
+          <div class="case-scope">400+ test cases across Admin, Seller, Customer portals · 3 months</div>
+          <div class="case-finding">
+            <strong>Found:</strong> Stripe payment failing on Safari — 15–20% of all users affected. Caught before launch.
+          </div>
+          <div class="case-result">
+            <strong>Result:</strong> Black Friday campaign — 2,000+ transactions with zero payment failures.
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <h4>Church Management SaaS</h4>
+          <div class="stack">React · Node.js · PostgreSQL · Computer Vision AI</div>
+        </div>
+        <div class="case-body">
+          <div class="case-scope">26 bugs in 5-day audit: 3 critical, 6 high, 11 medium · Ongoing retainer</div>
+          <div class="case-finding">
+            <strong>Found:</strong> Camera check-in crashing on Android devices — caught one week before client demo
+          </div>
+          <div class="case-result">
+            <strong>Result:</strong> 50+ churches using platform daily. Zero production incidents post-launch.
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <h4>ProEssay — Writing Platform</h4>
+          <div class="stack">MERN Stack · Socket.io · Stripe</div>
+        </div>
+        <div class="case-body">
+          <div class="case-scope">Complex multi-factor pricing engine · Real-time chat · 2 months</div>
+          <div class="case-finding">
+            <strong>Found:</strong> Pricing calculation returning wrong amounts on bundled orders — revenue risk
+          </div>
+          <div class="case-result">
+            <strong>Result:</strong> 500+ orders in first month. Zero billing disputes. Zero revenue loss.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-summary">
+      <div class="summary-stat">
+        <span class="s-num">30+</span>
+        <span class="s-lbl">Projects Tested</span>
+      </div>
+      <div class="summary-stat">
+        <span class="s-num">500+</span>
+        <span class="s-lbl">Bugs Caught</span>
+      </div>
+      <div class="summary-stat">
+        <span class="s-num">0</span>
+        <span class="s-lbl">Critical Bugs Reached Production</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">06</span>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 7: INDUSTRY DATA ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">Industry Data</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">The Data Confirms<br><span>What Agencies Already Know.</span></h2>
+    <p class="section-intro">QA is not a nice-to-have. The numbers from global research organizations show exactly what is at stake when agencies skip structured testing.</p>
+
+    <div class="industry-circles">
+      <div class="ind-circle">
+        <div class="ind-ring r1">
+          <div class="ind-ring-inner">
+            <div class="ind-pct">59%</div>
+          </div>
+        </div>
+        <p>Organizations outsource to reduce operational cost and risk</p>
+        <em>— Deloitte Global Outsourcing Survey</em>
+      </div>
+      <div class="ind-circle">
+        <div class="ind-ring r2">
+          <div class="ind-ring-inner">
+            <div class="ind-pct">70%</div>
+          </div>
+        </div>
+        <p>B2B decision-makers delegate key tasks to trusted third parties</p>
+        <em>— YouGov Business Survey</em>
+      </div>
+      <div class="ind-circle">
+        <div class="ind-ring r3">
+          <div class="ind-ring-inner">
+            <div class="ind-pct">85%</div>
+          </div>
+        </div>
+        <p>Post-release bugs traced to inadequate pre-release testing</p>
+        <em>— NIST Software Research</em>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="quotes-grid">
+      <div class="quote-block">
+        <div class="quote-mark">"</div>
+        <p>Shipping without QA is not saving time. It is borrowing time from your next sprint to pay for bugs your client will find first.</p>
+        <cite>— QAForge Testing Principle</cite>
+      </div>
+      <div class="quote-block">
+        <div class="quote-mark">"</div>
+        <p>The cost of fixing a bug in production is 6 times higher than fixing it before release. Prevention is the only sustainable QA strategy.</p>
+        <cite>— IBM Systems Sciences Institute</cite>
+      </div>
+    </div>
+
+    <div style="background:var(--light);border-radius:8px;padding:14px 18px;margin-top:14px;text-align:center;">
+      <p style="font-size:11px;color:var(--navy);font-weight:600;line-height:1.7;">The global software testing market is projected to reach <strong style="color:var(--accent);">$60 billion by 2027.</strong><br>Agencies that invest in structured QA now retain clients <strong style="color:var(--green);">3× longer</strong> than those that don't.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">07</span>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 8: PRICING ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">Investment & Packages</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">Transparent Pricing.<br><span>No Hourly Billing. No Surprises.</span></h2>
+    <p class="section-intro">Fixed monthly retainers. You know exactly what you pay. We focus on quality — not counting hours.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-header starter">
+          <div class="price-name">Starter</div>
+          <div class="price-amount">$2,500 <span>/ month</span></div>
+          <div class="price-desc">1 Dedicated QA Tester</div>
+          <div class="price-hours">80 hours per month</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li>Functional & regression testing</li>
+            <li>Bug documentation with screenshots</li>
+            <li>Test case development</li>
+            <li>Weekly QA report (every Friday)</li>
+            <li>Email & Slack support</li>
+            <li>Testing in your preferred tool</li>
+          </ul>
+          <div class="price-best"><strong>Best for:</strong> Agencies with 1–2 active client projects</div>
+        </div>
+      </div>
+
+      <div class="price-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <div class="price-header growth">
+          <div class="price-name">Growth</div>
+          <div class="price-amount">$4,500 <span>/ month</span></div>
+          <div class="price-desc">2 Dedicated QA Testers</div>
+          <div class="price-hours">160 hours per month</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li>Everything in Starter</li>
+            <li>API testing (REST & SOAP)</li>
+            <li>Cross-browser & device testing</li>
+            <li>Full test case library maintained</li>
+            <li>Bi-weekly video review calls</li>
+            <li>Performance testing included</li>
+          </ul>
+          <div class="price-best"><strong>Best for:</strong> Growing agencies with 3–5 active projects</div>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-header scale">
+          <div class="price-name">Scale</div>
+          <div class="price-amount">$7,000 <span>/ month</span></div>
+          <div class="price-desc">Full QA Team + Team Lead</div>
+          <div class="price-hours">240+ hours per month</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li>Everything in Growth</li>
+            <li>Dedicated team lead oversight</li>
+            <li>Security & penetration testing</li>
+            <li>Load and stress testing</li>
+            <li>Priority 4-hour response</li>
+            <li>CI/CD pipeline integration</li>
+          </ul>
+          <div class="price-best"><strong>Best for:</strong> Established agencies with 6+ projects</div>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-header custom">
+          <div class="price-name">Custom</div>
+          <div class="price-amount">Let's Talk</div>
+          <div class="price-desc">Tailored to Your Requirements</div>
+          <div class="price-hours">Any team size · Any hours · Any project type</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li>Any combination of services</li>
+            <li>Part-time, full-time, or burst capacity</li>
+            <li>Sprint-based or continuous engagement</li>
+            <li>Startup to enterprise — we scale with you</li>
+            <li>One-time audits available</li>
+            <li>Built entirely around your workflow</li>
+          </ul>
+          <div class="price-best"><strong>Best for:</strong> Unique requirements, any company size</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-note">
+      <h4>Flexible Engagement — You Are Always in Control</h4>
+      <span class="flex-pill">Month-to-month</span>
+      <span class="flex-pill">Scale up or down anytime</span>
+      <span class="flex-pill">No lock-in contracts</span>
+      <span class="flex-pill">30-day satisfaction guarantee</span>
+      <span class="flex-pill">Cancel anytime — no penalties</span>
+    </div>
+
+    <div class="comparison-note">
+      A dedicated US QA engineer costs <strong>$130K–$184K per year</strong> all-in (salary + benefits + taxes + recruitment). QAForge gives you a structured QA function — not just one person — <strong>starting at $2,500/month.</strong>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">08</span>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 9: GET STARTED ══════════════ -->
+<div class="page section-page">
+  <div class="accent-bar"></div>
+  <div class="page-header">
+    <div class="brand">QAForge</div>
+    <div class="section-label">Get Started</div>
+  </div>
+  <div class="page-body">
+    <h2 class="section-title">Not Ready to Commit?<br><span>Start With Zero Risk.</span></h2>
+    <p class="section-intro">Every client we have ever worked with started with a free audit. The report speaks for itself.</p>
+
+    <div class="audit-box">
+      <h3>Free 5-Day QA Audit</h3>
+      <p>We test one module or feature of your project for 5 full business days — completely free. Monday we start. Friday you receive your professional audit report.</p>
+
+      <div class="audit-items">
+        <div class="audit-item">Full bug report with severity levels</div>
+        <div class="audit-item">Documented test cases for your team</div>
+        <div class="audit-item">Fix recommendations and priority guidance</div>
+        <div class="audit-item">Final quality summary — PDF delivered</div>
+      </div>
+
+      <div class="audit-tags">
+        <span class="audit-tag">Zero Cost</span>
+        <span class="audit-tag">Zero Contract</span>
+        <span class="audit-tag">Zero Pressure</span>
+        <span class="audit-tag">Pure Value</span>
+      </div>
+    </div>
+
+    <div class="paths">
+      <div class="path-card yes">
+        <h4>✅ If You Like Our Work</h4>
+        <p>We move to a monthly retainer and continue where the audit left off. Your team, your tools, your workflow — already established.</p>
+      </div>
+      <div class="path-card no">
+        <h4>📄 If You Don't</h4>
+        <p>Keep the audit report with our compliments. No hard feelings. You still got real QA value — bugs identified, documented, and ready to fix.</p>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <div class="contact-item">
+        <h4>Email</h4>
+        <p>hello@qaforge.online</p>
+      </div>
+      <div class="contact-item">
+        <h4>Website</h4>
+        <p>www.qaforge.online</p>
+      </div>
+      <div class="contact-item">
+        <h4>WhatsApp</h4>
+        <p>+92-341-4265012</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:14px;background:var(--light);border-radius:8px;">
+      <p style="font-size:10px;color:var(--muted);">We respond within 4 business hours · Monday–Friday · US/UK timezone overlap</p>
+      <p style="font-size:12px;font-weight:700;color:var(--navy);margin-top:4px;">Quality software. Happy clients. Predictable monthly pricing.</p>
+    </div>
+  </div>
+
+  <!-- Closing band -->
+  <div style="background:var(--navy);padding:16px 14mm;margin-top:14px;display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <div style="font-family:'DM Serif Display',serif;font-size:16px;color:white;">QAForge</div>
+      <div style="font-size:9px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;">Forging Quality Into Every Release</div>
+    </div>
+    <div style="font-size:9px;color:rgba(255,255,255,0.4);text-align:right;">
+      hello@qaforge.online<br>www.qaforge.online
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>qaforge.online</span>
+    <span class="pgnum">09</span>
+  </div>
+</div>
+
+</body>
+</html>
