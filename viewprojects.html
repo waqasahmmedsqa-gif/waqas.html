@@ -238,24 +238,112 @@
     </header>
 
     <!-- Services Section -->
-   <header>
-        <div class="logo">🛡️ QAforge</div>
-        <nav>
-            <ul>
-            
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/viewallservices.html">Services</a></li>
-                <li><a href="/viewprojects.html">Projects</a></li>
-                <li><a href="/aboutUs.html">About Us</a></li>
-                <li><a href="/error.html">Contact</a></li>
-                <li><a href="/privacypolicy.html">privacy policy</a></li>
-            </ul>
-        </nav>
-        <div style="display:flex; align-items:center;">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QAforge</title>
+    <style>
+        /* Header Related CSS Only */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #111;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #00b3b3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .get-started {
+            background-color: #00b3b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            margin-left: 15px;
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Dark/Light Mode Variables */
+        :root {
+            --bg-color: #000;
+            --text-color: #fff;
+        }
+
+        body.light-mode {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🛡️ QAforge</div>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/viewallservices.html">Services</a></li>
+            <li><a href="/viewprojects.html">Projects</a></li>
+            <li><a href="/error.html">About Us</a></li>
+            <li><a href="/submission.html">Contact</a></li>
+            <li><a href="/privacy-policy.html">privacy policy</a></li>
+        </ul>
+    </nav>
+    <div style="display:flex; align-items:center; gap: 10px;">
+        <a href="submission.html" style="text-decoration: none;">
             <button class="get-started">Get Started</button>
-            <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
-        </div>
-    </header>
+        </a>
+        <a href="/QAForge_Company_Portfolio_Part1.pdf" download="QAforge-Profile.pdf">
+            <button class="get-started">📥 Profile</button>
+        </a>
+        <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    </div>
+</header>
 
     <!-- Projects Section - 6 Cards -->
     <section style="margin-top: 100px;">
